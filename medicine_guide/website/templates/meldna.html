@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedicineGuide</title>
+</head>
+<body>
+    {% include 'nav_bar.html' %}
+    
+<h1>Калькулятор MELD/MELD-Na</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Рассчитать</button>
+</form>
+<h2>MELD: {{ MELD }}</h2>
+<p>Шкала MELD (Model for End Stage Liver Disease) система подсчета баллов для оценки терминальных стадий заболеваний печени и прогноза жизни у пациентов с конечной стадией печеночной недостаточности. Шкала служит для прогнозирования уровня смертности больных, нуждающихся в пересадке печени.</p>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Оценка MELD</th>
+            <th scope="col">Смертность</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">≤9</th>
+            <td>1.9%</td>
+        
+          </tr>
+          <tr>
+            <th scope="row">10–19</th>
+            <td>6.0%</td>
+          </tr>
+          <tr>
+            <th scope="row">20–29</th>
+            <td>19.6%</td>
+          </tr>
+          <tr>
+            <th scope="row">30–39</th>
+            <td>52.6%</td>
+          </tr>
+          <tr>
+            <th scope="row">≥40</th>
+            <td>71.3%</td>
+          </tr>
+    </tbody>
+  </table>
+
+ 
+
+</body>
+</html>

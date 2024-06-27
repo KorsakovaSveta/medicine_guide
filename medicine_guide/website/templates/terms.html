@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+    <title>MedicineGuide</title>
+  
+</head>
+
+<body>
+  {% include 'nav_bar.html' %}
+  <div class="term">
+   <h1>{{ term.name }}</h1> 
+  {% if term.description %}
+  <p>{{ term.description }}</p>
+     {% endif %}
+     {% if term.text %}
+     <p>{{ term.text }}</p>
+     {% endif %}
+    </div>
+
+  
+    <h2 id="terms-list">Список терминов</h2>
+    {% for letter, nodes in all_nodes.items %}
+  <h2 id="letter">{{ letter }}</h2>
+  <div class="grid-container">
+    {% for node in nodes %}
+      <div class="grid-item">
+        <a href="{% url 'term_detail_view' node %}">{{ node }}</a>
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
+       
+        
+
+<!--    
+    <h2>Симптомы</h2>
+    <ol>
+      {% for node, description in symptoms.items %}
+          
+        <li>{{ node }}</li>
+        {% if description %}
+        <p>{{ description }}</p>
+        {% endif %}
+      {% endfor %}
+      </ol> -->
+   
+</body>
+</html>
