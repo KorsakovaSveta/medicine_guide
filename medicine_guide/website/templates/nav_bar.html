@@ -41,9 +41,9 @@
 
   <nav class="bar">
   <a href="{% url 'home' %}"><img id='logo' src="{% static 'css/logo.png' %}" alt="Logo"></a>
-  <div>
+  <div id="btn">
     
-        <button id="btn" aria-current="page" href="{% url 'search_disease_by_symptoms' %}">Симптоматика</button>
+        <a href="{% url 'search_disease_by_symptoms' %}">Симптоматика</a>
       
      
       <!-- <li class="nav-item dropdown">
