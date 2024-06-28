@@ -12,7 +12,7 @@
 }
 
 #logo {
-   
+    position: absolute; 
     width: 100px;
     height: 100px;
  
@@ -37,6 +37,7 @@
   } */
 
 .bar {
+    position: relative;
     background: #5e17eb;
     width: 100%;
     height: 50px;
@@ -83,17 +84,53 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Добавляем легкий эффект тени */
 }
 
-#btn {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-    border-radius: 20px;
+.btn {
+    
+    width: 140px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #5e17eb;
+    border: #fff 1px solid;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 20px;
+    font-weight: bold;
 
   }
+  .btn a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .symptoms {
+    top:25px;
+    right: 180px;
+    position: absolute; 
+  }
+
+  .calculator {
+    top:25px;
+    right: 20px;
+    position: absolute; 
+  }
+
+  
+
+
+
+
+#calc_1 a, #calc_2 a, #calc_3 a {
+    text-decoration: none;
+    color: #000;
+   
+  }
+
+
+
 
 
 

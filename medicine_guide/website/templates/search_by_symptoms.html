@@ -1,85 +1,69 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+    <script type="text/javascript" src='{% static "js/jquery.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/search_by_symptoms.js" %}'></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search_by_symptoms.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+
     <title>MedicineGuide</title>
 
 </head>
 
 <body>
     {% include 'nav_bar.html' %}
-    <!-- <h1>Select Symptoms</h1>
+    <div class="term">
+    {% if selected_symptoms %}
+    <h2 class="select">Выбранные симптомы:</h2>
+       
+            {% for symptom in selected_symptoms %}
+            <p class="terms">{{ symptom }}</p>
+            {% endfor %}
+ 
+    {% endif %}
+    {% if diseases %}
+    <h2 class="select" id="search">Найденные заболевания:</h2>
 
-    <form action="{% url 'search_disease_by_symptoms' %}" method="POST">
-   
         
-        {% csrf_token %}
-        {% for symptom in all_symptoms %}
-            <input type="checkbox" name="selected_symptoms" value="{{ symptom }}">{{ symptom.name }}<br>
-        {% endfor %}
-        <button type="submit">Search</button>
-
-    </form>
-    
-      <h1>Search Results</h1>
-      <ul>
-          {% for disease in matching_diseases %}
-              <li>{{ disease }}</li>
-          {% endfor %}
-      </ul> -->
-      <!-- <h1>Поиск заболеваний по симптомам</h1>
-
-      <form action="{% url 'search_disease_by_symptoms' %}" method="POST">
-          {% csrf_token %}
-          <h2>Выберите симптомы:</h2>
-          <ul>
-              {% for symptom in all_symptoms %}
-                  <li>
-                      <input type="checkbox" name="symptoms" value="{{ symptom }}" 
-                             {% if symptom.name in selected_symptoms %} checked {% endif %}>
-                      {{ symptom }}
-                  </li>
-              {% endfor %}
-          </ul>
-  
-          <button type="submit">Найти заболевания</button>
-      </form>
-  
-      <h2>Найденные заболевания:</h2>
-      <ul>
-          {% if matching_diseases %}
-              {% for disease in matching_diseases %}
-                  <li>{{ disease }}</li>
-                  {% for symptoms in symptoms_of_matching_diseases %}
-                    <li>{{symptoms}}</li>
-                  {% endfor %}
-              {% endfor %}
-          {% else %}
-              <li>Ничего не найдено.</li>
-          {% endif %}
-      </ul> -->
-
-
-    
-
-    <form action="{% url 'search_disease_by_symptoms' %}" method="POST">
-        {% csrf_token %}
-        <h2>Выберите симптомы:</h2>
-     
-            {% for symptom in all_symptoms %}
-               
-                    <input type="checkbox" name="symptoms" value="{{ symptom }}" 
-                           {% if symptom.name in selected_symptoms %} checked {% endif %}>
-                           <label>{{ symptom }}</label><br>
-                
+            {% for disease in diseases %}
+                <p class="terms">{{ disease }}
+                   
+                </p>
             {% endfor %}
         
-
-        <button type="submit">Найти заболевания</button>
-    </form>
-    
+   
+    {% else %}
+    <h2 class="select">Найденные заболевания:</h2>
+            <p class="terms">Заболевания не найдены.</p>
+        {% endif %}
+    </div>
+    <form action="{% url 'search_disease_by_symptoms' %}" method="POST" id="searchForm">
+        {% csrf_token %}
+        <h2 class="terms-list" id="symptoms">Выберите симптомы:</h2>
+      
+        {% for letter, symptoms in all_symptoms.items %}
+        <h2 id="letter">{{ letter }}</h2>
+        <div class="grid-container">
+          {% for symptom in symptoms %}
+          <div class="grid-item">
+            <label>
+              <input type="checkbox" name="symptoms" value="{{ symptom }}" {% if symptom.name in selected_symptoms %} checked {% endif %}>
+              <span id="symptomText">{{ symptom }}</span>
+            </label><br>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit" style="display: none;">Найти заболевания</button>
+      </form>
+   
 
       <!-- <h1>Выберите симптомы:</h1>
     <form method="POST" action="{% url 'search_disease_by_symptoms' %}">
@@ -93,48 +77,7 @@
         
         <button type="submit">Поиск</button>
     </form> -->
-    {% if selected_symptoms %}
-    <h2>Выбранные симптомы:</h2>
-        <ul>
-            {% for symptom in selected_symptoms %}
-            <li>{{ symptom }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <!-- {% if diseases %}
-    <h2>Возможные заболевания:</h2>
-    <ul>
-        {% for disease in diseases %}
-        <li>
-            <strong>Заболевание:</strong> {{ disease }}<br>
-            
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% if other_symptoms %}
-    <h2>Остальные симптомы:</h2>
-    <ul>
-        {% for symptom in other_symptoms %}
-            <li>{{ symptom }}</li>
-        {% empty %}
-            <li>Нет других симптомов</li>
-        {% endfor %}
-    </ul>
-    {% endif %} -->
 
-    <h2>Найденные заболевания:</h2>
-    <ul>
-        {% if diseases %}
-            {% for disease in diseases %}
-                <li>{{ disease }}
-                   
-                </li>
-            {% endfor %}
-        {% else %}
-            <li>Ничего не найдено.</li>
-        {% endif %}
-    </ul>
     
 
     

@@ -122,6 +122,7 @@ def search_disease_by_symptoms(request):
 
     all_symptoms = Symptom.nodes.all()
     all_symptoms = sorted(list(set(symptom.name for symptom in all_symptoms)))
+    all_symptoms = grouped_terms(all_symptoms)
     selected_symptoms, diseases, other_symptoms, probable_diseases = [], [], [], []
     
     if request.method == 'POST':
@@ -158,7 +159,7 @@ def search_disease_by_symptoms(request):
 
                 other_symptoms = list(set([item for sublist in other_symptoms for item in sublist]))
                 #probable_diseases = additional_search(request, other_symptoms, selected_symptoms, diseases)
-   
+     
     return render(request, 'search_by_symptoms.html', {
         'all_symptoms': all_symptoms,
         'selected_symptoms': selected_symptoms,

@@ -1,0 +1,97 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 столбца с равной шириной */
+    grid-gap: 20px; /* Промежуток между ячейками */
+  }
+  
+  .grid-item {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+
+  }
+
+
+  input[type="checkbox"] {
+    display: none; /* скрываем стандартную галочку */
+  }
+  
+  label {
+    cursor: pointer;
+  }
+  
+  #symptomText {
+    color: black; /* цвет текста по умолчанию */
+  }
+  
+  input[type="checkbox"]:checked + #symptomText {
+    color: rgb(13 110 253); /* цвет текста при выборе элемента */
+  }
+
+  .terms-list, #letter{
+    display: flex;
+    margin: auto;
+    justify-content: left;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 55px;
+    color: rgb(13 110 253);
+    /* color: #5e17eb; */
+}
+
+/* #terms-list {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+} */
+
+#letter {
+    font-size: 45px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+.select {
+    display: flex;
+    margin: auto;
+    justify-content: left;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 38px;
+    color: rgb(13 110 253);
+   
+}
+
+.terms {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px; 
+    margin-bottom: -3px;
+}
+
+.term {
+  
+    border: #5e17eb 1px solid;
+    border-radius: 20px;
+    margin: 5px 3px 20px 3px;
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+  }
+
+  #search {
+    margin-top: 10px;
+  }
+
+  #symptoms {
+    margin-top: -10px;
+  }

@@ -41,11 +41,27 @@
 
   <nav class="bar">
   <a href="{% url 'home' %}"><img id='logo' src="{% static 'css/logo.png' %}" alt="Logo"></a>
-  <div id="btn">
+  <div class="btn symptoms">
     
         <a href="{% url 'search_disease_by_symptoms' %}">Симптоматика</a>
+    </div>
+    <div class="btn calculator dropdown">
+        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          Калькуляторы
+        </a>
       
-     
+  
+        <ul class="dropdown-menu mt-3">
+          <li id='calc_1'><a  class="dropdown-item" href="{% url 'calculate_bmi' %}">Индекс массы тела(ИМТ)</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li id='calc_2'><a class="dropdown-item" href="{% url 'calculator_child_height' %}">Рост ребёнка</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li id='calc_3'><a class="dropdown-item" href="{% url 'calculate_meldna' %}">Калькулятор MELD/MEL-DNa</a></li>
+        </ul>
+      </div>
+      
+    
+    
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Калькулятеры

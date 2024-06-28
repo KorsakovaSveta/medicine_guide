@@ -1,26 +1,53 @@
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/meldna.css' %}">
+    <script type="text/javascript" src='{% static "js/jquery.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/melda.js" %}'></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+
     <title>MedicineGuide</title>
+   
 </head>
+
 <body>
     {% include 'nav_bar.html' %}
-    
-<h1>Калькулятор MELD/MELD-Na</h1>
+<div class="calc-page">  
+<div class="bmi">   
+<h1  class="name" id="calc">Калькулятор MELD</h1>
 
-<form method="post">
+<form method="post" id="bmi-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Рассчитать</button>
+    <button type="submit" id="btn-meldna">Рассчитать</button>
 </form>
-<h2>MELD: {{ MELD }}</h2>
+
+
+  </div>
+  
+  <div class="scale">
+  <h1 class="name" id="calc">Шкала MELD</h1>  
+<div class="answer">
+  
 <p>Шкала MELD (Model for End Stage Liver Disease) система подсчета баллов для оценки терминальных стадий заболеваний печени и прогноза жизни у пациентов с конечной стадией печеночной недостаточности. Шкала служит для прогнозирования уровня смертности больных, нуждающихся в пересадке печени.</p>
 
-<table class="table">
-    <thead class="table-dark">
+  <h2 id = 'resulte'>
+    MELD: 
+    {% if MELD %}
+    {{ MELD }}
+    {% endif %}
+  </h2>
+ 
+<table id="table">
+    <thead>
         <tr>
             <th scope="col">Оценка MELD</th>
             <th scope="col">Смертность</th>
@@ -50,8 +77,10 @@
           </tr>
     </tbody>
   </table>
-
- 
+</div>
+</div>
+ </div>
+ <br>
 
 </body>
 </html>
