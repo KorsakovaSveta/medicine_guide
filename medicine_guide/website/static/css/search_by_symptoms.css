@@ -30,7 +30,7 @@
   }
   
   input[type="checkbox"]:checked + #symptomText {
-    color: rgb(13 110 253); /* цвет текста при выборе элемента */
+    color: #0d6efd; /* цвет текста при выборе элемента */
   }
 
   .terms-list, #letter{
@@ -94,4 +94,15 @@
 
   #symptoms {
     margin-top: -10px;
+  }
+
+  #search-btn {
+    margin: 10px 0 10px 0;
+    width: 200px;
+    background-color: #5e17eb;
+    color: #fff;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
   }
