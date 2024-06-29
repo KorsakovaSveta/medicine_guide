@@ -8,21 +8,6 @@ from math import sqrt, erf, log
 from uuid import UUID
 # Create your views here.
 def diseasesClasses(request):
-    # all_nodes = []
-    # diseases_classes = DiseasesClass.nodes.all()
-    # diseases = Disease.nodes.all()
-    # symptoms = Symptom.nodes.all()  
-    # models = [diseases_classes, diseases,symptoms]
-    # all_nodes = set(item.name for items in models for item in items)
-    # all_nodes = sorted(all_nodes)
-    
-    # # unique_nodes = {}
-    # # for node in all_nodes:
-    # #     node_attributes = [node.description, node.text]
-    # #     unique_nodes[node.name] = node_attributes
-    # all_nodes = grouped_terms(all_nodes)
-   
-
     return render(request, 'index.html', {'all_nodes': allNodes()})
 
 def allNodes():
@@ -33,11 +18,6 @@ def allNodes():
     models = [diseases_classes, diseases,symptoms]
     all_nodes = set(item.name for items in models for item in items)
     all_nodes = sorted(all_nodes)
-    
-    # unique_nodes = {}
-    # for node in all_nodes:
-    #     node_attributes = [node.description, node.text]
-    #     unique_nodes[node.name] = node_attributes
     all_nodes = grouped_terms(all_nodes)
     return all_nodes
 
